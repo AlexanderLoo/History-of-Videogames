@@ -19,7 +19,8 @@ public class GameController : MonoBehaviour {
 	} 
 
 	void Update(){
-
+		/*Si estamos en el estado de espera y presionamos "Space", iniciamos el juego desactivando el demo, habilitamos el script que spawnea los asteroides,
+		 habilitamos las vidas del jugador, el jugador mismo y desactivamos el texto "1 coin 1 play"*/
 		if (waitingState) {
 			if (Input.GetKeyDown (KeyCode.Space)) {
 
@@ -29,6 +30,8 @@ public class GameController : MonoBehaviour {
 				player.SetActive (true);
 				waitingText.SetActive (false);
 
+				/*Creamos una lista con todos los asteroides que existen en la escena en ese momento, y por cada una de ellas los destruimos.
+				Esto sirve para limpiar los asteroides previamente creados por la demo y así comenzar el juego con nuevos asteroides*/
 				GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 				foreach (GameObject enemy in enemies) {
 					Destroy (enemy);
@@ -36,13 +39,14 @@ public class GameController : MonoBehaviour {
 				waitingState = false;
 			}
 		}
+		//Si al player no le queda mas vidas, terminamos el juego
 		if (playerLife.life == 0) {
 			GameOverState ();
 		}
 	}
 
 	void GameOverState(){
-
+		//Activamos el texto de "Game Over", desactivamos al player y sus vidas, reiniciamos el juego en un breve periodo de tiempo
 		gameOver.SetActive (true);
 		player.SetActive (false);
 		lives.SetActive (false);

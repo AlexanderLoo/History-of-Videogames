@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour {
 	public Life playerLives;
 	[System.NonSerialized]
 	public int totalScore;
+	//Cada # de puntos se agrega una vida más
 	private int addLife = 1000;
 
 	void Start(){
@@ -17,7 +18,7 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	void Update(){
-
+		//Si el score total sobrepasa un número, se agrega una vida más
 		if(totalScore >= addLife){
 			playerLives.life++;
 			addLife += 1000;
@@ -25,7 +26,7 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	public void AddScore(int score){
-
+		//función para agregar el score al score total,se llama desde el script "Enemy"
 		totalScore += score;
 		scoreDisplay.text = totalScore.ToString ();
 	}

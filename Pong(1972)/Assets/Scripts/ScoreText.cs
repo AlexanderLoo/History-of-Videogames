@@ -15,6 +15,8 @@ public class ScoreText : MonoBehaviour {
 
 	void Update(){
 
+		/*Hay un problema con la tipografía en el score, cuando llega a decenas los números están muy pegados.
+		Por lo tanto cada vez que llegue a 10 u 11 le damos un espacio entre los dos dígitos*/
 		if (score.score == 10) {
 			scoreText.text = "1 0";
 		}

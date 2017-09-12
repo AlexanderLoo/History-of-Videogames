@@ -17,14 +17,16 @@ public class Life : MonoBehaviour {
 	}
 
 	void Update(){
-
+		//Si perdemos una vida, la imagen de la vida se desactiva y se cambia al siguiente índice de la vida 
 		if (life < currentLife) {
 			lives [livesIndex].enabled = false;
 			currentLife = life;
 			livesIndex--;
+			//El player resetea su posición inicial y su velocidad es cero
 			transform.position = Vector3.zero;
 			_rigidbody.velocity = Vector3.zero;
 		}
+		//Si se adquiere una vida, se activa la imagen de la vida del siguiente índice
 		if (life > currentLife) {
 			++livesIndex;
 			lives [livesIndex].enabled = true;

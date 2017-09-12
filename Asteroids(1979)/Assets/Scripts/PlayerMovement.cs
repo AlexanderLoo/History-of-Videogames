@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
 	private Rigidbody2D _rigidbody;
-
 	private bool moveForward;
 
 	public float rotationSpeed, moveForce;
@@ -16,15 +15,17 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void Update(){
-
+		//Inputs de rotación y movimiento hacia adelante previamente editados en Inputs
+		//Teclas derecha e izquierda('A' y 'D')
 		float rotation = Input.GetAxis("Rotation");
+		//Tecla adelante('W')
 		moveForward = Input.GetButton ("Forward");
 
 		transform.Rotate (0, 0, rotation * rotationSpeed);
 	}
 
 	void FixedUpdate(){
-
+		//Si se presiona la tecla de avanzar se agrega fuerza física hacia adelante
 		if (moveForward) {
 			_rigidbody.AddForce (transform.up * moveForce);
 		}

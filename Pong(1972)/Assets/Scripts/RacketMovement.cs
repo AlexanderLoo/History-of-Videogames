@@ -6,6 +6,7 @@ public class RacketMovement : MonoBehaviour {
 
 	private Rigidbody2D _rigidbody;
 
+	//Este string sirve para definir que inputs va usar cada raqueta(derecha o izquierda)
 	public string axis;
 	public float speed;
 	private float moveY;
